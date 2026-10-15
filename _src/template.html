@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{title}}</title>
+  <meta name="description" content="{{description}}">
+  <link rel="canonical" href="{{canonical}}">
+  <meta name="theme-color" content="#1d2a2d">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Fuzzy Siren LLC">
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:url" content="{{canonical}}">
+  <meta property="og:image" content="https://fuzzysiren.com/assets/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
+  <link rel="apple-touch-icon" href="assets/icon-180.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Fuzzy Siren LLC",
+    "url": "https://fuzzysiren.com",
+    "logo": "https://fuzzysiren.com/assets/logo-badge.png",
+    "email": "ajt@fuzzysiren.com",
+    "description": "Fuzzy Siren LLC is an independent video game studio based in Central Ohio.",
+    "address": { "@type": "PostalAddress", "addressRegion": "OH", "addressCountry": "US" }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <img src="assets/icon-192.png" alt="Fuzzy Siren logo" width="44" height="44">
+        <span>Fuzzy Siren<small>LLC</small></span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="nav" id="nav" aria-label="Primary">{{nav}}</nav>
+    </div>
+  </header>
+
+  <main id="main">
+{{body}}
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <div class="footer-brand">
+          <img src="assets/icon-192.png" alt="" width="56" height="56">
+          <div>
+            <strong style="font-family:var(--font-display);letter-spacing:.08em;color:var(--ink)">FUZZY SIREN LLC</strong>
+            <p class="small" style="margin:.35rem 0 0">An independent video game studio in Central Ohio, building original worlds one handcrafted title at a time.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="games.html">Games</a></li>
+          <li><a href="press.html">Press kit</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy policy</a></li>
+          <li><a href="mailto:ajt@fuzzysiren.com">ajt@fuzzysiren.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <span>&copy; <span data-year>2026</span> Fuzzy Siren LLC. All rights reserved.</span>
+      <span>Fuzzy Siren and the Fuzzy Siren logo are trademarks of Fuzzy Siren LLC.</span>
+    </div>
+  </footer>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
