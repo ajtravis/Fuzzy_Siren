@@ -5,7 +5,7 @@
   --bg-3: #2d3f43;
   --ink: #e6d9c0;
   --ink-dim: #a8b1a9;
-  --ink-faint: #6f7f7a;
+  --ink-faint: #9fada7;
   --line: rgba(230, 217, 192, 0.12);
   --moon: #e0c98f;
   --moon-deep: #b89a5a;
@@ -102,6 +102,7 @@ p { margin: 0 0 1em; }
 .section-alt { background: linear-gradient(180deg, var(--bg-2), var(--bg)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .section-head { max-width: 62ch; margin-bottom: 2.5rem; }
 .grid { display: grid; gap: 1.5rem; }
+.grid > * { min-width: 0; }
 .grid-3 { grid-template-columns: repeat(3, 1fr); }
 .grid-2 { grid-template-columns: repeat(2, 1fr); }
 .card {
@@ -156,7 +157,8 @@ textarea { min-height: 150px; resize: vertical; }
 .prose hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
 
 /* Fact sheet */
-.facts { width: 100%; border-collapse: collapse; }
+.facts { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.facts td { overflow-wrap: anywhere; }
 .facts th, .facts td { text-align: left; padding: .8rem .5rem; border-bottom: 1px solid var(--line); vertical-align: top; }
 .facts th { color: var(--ink-faint); font-weight: 400; width: 34%; font-size: .9rem; letter-spacing: .05em; text-transform: uppercase; }
 
