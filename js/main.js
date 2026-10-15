@@ -17,7 +17,7 @@
   // Forms: post to the endpoint in data-endpoint (e.g. Formspree) if configured,
   // otherwise fall back to opening the visitor's mail client.
   document.querySelectorAll('form[data-form]').forEach(function (form) {
-    var status = form.querySelector('.form-status');
+    var status = form.querySelector('.form-status') || (form.parentNode && form.parentNode.querySelector('.form-status'));
     var endpoint = form.getAttribute('data-endpoint') || '';
     var configured = endpoint && endpoint.indexOf('REPLACE_ME') === -1;
 
