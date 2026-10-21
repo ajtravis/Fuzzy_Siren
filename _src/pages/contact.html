@@ -10,38 +10,34 @@
 
 <section class="section">
   <div class="wrap contact-grid">
+    <div class="card contact-card">
+      <p class="eyebrow">Email us</p>
+      <a class="contact-email" href="mailto:ajt@fuzzysiren.com">ajt@fuzzysiren.com</a>
+      <p class="muted">The fastest way to reach the studio. One inbox, read by the founder.</p>
+      <a class="btn btn-primary" href="mailto:ajt@fuzzysiren.com?subject=Hello%20Fuzzy%20Siren">Write to us</a>
+    </div>
     <div>
       <ul class="contact-list">
-        <li><strong>Email</strong><a href="mailto:ajt@fuzzysiren.com">ajt@fuzzysiren.com</a></li>
-        <li><strong>Press</strong>See the <a href="press.html">press kit</a> for assets and boilerplate.</li>
+        <li><strong>Press</strong>Interviews, assets and embargoed announcements. Start with the <a href="press.html">press kit</a>.</li>
         <li><strong>Business</strong>Publishing, platform and partnership inquiries welcome.</li>
+        <li><strong>Contract work</strong>Artists, composers and engineers: send a portfolio link and your availability.</li>
         <li><strong>Location</strong>Central Ohio, United States</li>
         <li><strong>Response time</strong>Usually within a few business days.</li>
       </ul>
     </div>
-    <div class="card">
-      <form class="form" data-form data-endpoint="https://formspree.io/f/REPLACE_ME" data-subject="Contact form — fuzzysiren.com" data-success="Thanks — your message is on its way.">
-        <label class="honey" aria-hidden="true">Leave blank <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
-        <div class="form-row">
-          <label>Name <input type="text" name="name" required autocomplete="name"></label>
-          <label>Email <input type="email" name="email" required autocomplete="email"></label>
-        </div>
-        <label>Topic
-          <select name="topic">
-            <option>Press</option>
-            <option>Business / partnership</option>
-            <option>Contract work</option>
-            <option>Support</option>
-            <option>Other</option>
-          </select>
-        </label>
-        <label>Message <textarea name="message" required></textarea></label>
-        <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
-          <button class="btn btn-primary" type="submit">Send message</button>
-          <span class="form-status" role="status" aria-live="polite"></span>
-        </div>
-        <p class="form-note">By sending, you agree to our <a href="privacy.html">privacy policy</a>.</p>
-      </form>
-    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="updates">
+  <div class="wrap">
+    <h2>Prefer to just hear the news?</h2>
+    <p class="muted">Join the mailing list and we'll email you when there's something worth announcing.</p>
+    <form class="inline-form" data-signup data-success="You're on the list. Thanks!" style="justify-content:center;margin-top:1.5rem">
+      <label class="honey" aria-hidden="true">Leave blank <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
+      <input type="email" name="email" placeholder="you@example.com" required aria-label="Email address">
+      <button class="btn btn-primary" type="submit">Subscribe</button>
+    </form>
+    <p class="form-status" role="status" aria-live="polite"></p>
+    <p class="form-note">We only use your email to send studio news. See our <a href="privacy.html">privacy policy</a>.</p>
   </div>
 </section>

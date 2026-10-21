@@ -1,4 +1,9 @@
 (function () {
+  // Mailing-list endpoint: the Google Apps Script web-app URL from docs/mailing-list-setup.md.
+  // Leave empty until the sheet is set up; the form will show a friendly message instead.
+  var SIGNUP_ENDPOINT = '';
+  var CONTACT_EMAIL = 'ajt@fuzzysiren.com';
+
   // Mobile nav
   var toggle = document.querySelector('.nav-toggle');
   var nav = document.querySelector('.nav');
@@ -14,34 +19,44 @@
     el.textContent = new Date().getFullYear();
   });
 
-  // Forms: post to the endpoint in data-endpoint (e.g. Formspree) if configured,
-  // otherwise fall back to opening the visitor's mail client.
-  document.querySelectorAll('form[data-form]').forEach(function (form) {
+  // Mailing-list signup -> Google Sheet (via Apps Script)
+  document.querySelectorAll('form[data-signup]').forEach(function (form) {
     var status = form.querySelector('.form-status') || (form.parentNode && form.parentNode.querySelector('.form-status'));
-    var endpoint = form.getAttribute('data-endpoint') || '';
-    var configured = endpoint && endpoint.indexOf('REPLACE_ME') === -1;
+    var button = form.querySelector('button[type=submit]');
+    var emailInput = form.querySelector('input[type=email]');
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      if (form.querySelector('.honey input') && form.querySelector('.honey input').value) return;
-      var data = new FormData(form);
+      var honey = form.querySelector('.honey input');
+      if (honey && honey.value) return;
 
-      if (!configured) {
-        var subject = encodeURIComponent(form.getAttribute('data-subject') || 'Message from fuzzysiren.com');
-        var lines = [];
-        data.forEach(function (v, k) { if (k !== '_gotcha') lines.push(k + ': ' + v); });
-        window.location.href = 'mailto:' + (form.getAttribute('data-mailto') || 'ajt@fuzzysiren.com') +
-          '?subject=' + subject + '&body=' + encodeURIComponent(lines.join('\n'));
-        setStatus('Opening your email app\u2026', 'ok');
+      var email = (emailInput.value || '').trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        setStatus('Please enter a valid email address.', 'err');
+        return;
+      }
+      if (!SIGNUP_ENDPOINT) {
+        setStatus('Signups open soon. In the meantime, email ' + CONTACT_EMAIL + ' and we\u2019ll add you.', 'err');
         return;
       }
 
-      setStatus('Sending\u2026', '');
-      fetch(endpoint, { method: 'POST', body: data, headers: { Accept: 'application/json' } })
-        .then(function (r) { if (!r.ok) throw new Error(); form.reset(); setStatus(form.getAttribute('data-success') || 'Thanks \u2014 we got it.', 'ok'); })
-        .catch(function () { setStatus('Something went wrong. Please email ajt@fuzzysiren.com instead.', 'err'); });
+      var body = new URLSearchParams({ email: email, source: location.pathname, ua: navigator.userAgent });
+      setBusy(true);
+      setStatus('Adding you\u2026', '');
+      // Apps Script web apps respond via redirect without CORS headers, so use no-cors:
+      // the response is opaque, but a resolved promise means the request was delivered.
+      fetch(SIGNUP_ENDPOINT, { method: 'POST', mode: 'no-cors', body: body })
+        .then(function () {
+          form.reset();
+          setStatus(form.getAttribute('data-success') || 'You\u2019re on the list. Thanks!', 'ok');
+        })
+        .catch(function () {
+          setStatus('Something went wrong. Please try again or email ' + CONTACT_EMAIL + '.', 'err');
+        })
+        .then(function () { setBusy(false); });
     });
 
+    function setBusy(busy) { if (button) button.disabled = busy; }
     function setStatus(msg, cls) {
       if (!status) return;
       status.textContent = msg;

@@ -15,12 +15,9 @@ Pages are generated from `_src/` so the header/footer stay in sync:
 
 After editing, run `python _src/gen.py` to regenerate the top-level `*.html` files, then commit both. (You can also just edit the top-level files directly if you prefer; just don't re-run the generator afterwards.)
 
-## Forms
+## Mailing list
 
-The mailing-list and contact forms post to the `data-endpoint` on each `<form>`. They ship with a `REPLACE_ME` placeholder, which makes them fall back to opening the visitor's email client addressed to `ajt@fuzzysiren.com`. To collect submissions without the mailto fallback:
-
-1. Create a free form at https://formspree.io (or similar) pointed at `ajt@fuzzysiren.com`.
-2. Replace `https://formspree.io/f/REPLACE_ME` in `_src/pages/index.html`, `games.html` and `contact.html` with your endpoint and regenerate.
+The signup forms (home, games, contact pages) POST emails to a Google Apps Script attached to a Google Sheet. Setup instructions and the script are in [`docs/mailing-list-setup.md`](docs/mailing-list-setup.md). The web-app URL goes in `SIGNUP_ENDPOINT` at the top of `js/main.js`; until it is set, the form shows a "signups open soon" message. There is no contact form; the Contact page links to ajt@fuzzysiren.com.
 
 ## Assets
 

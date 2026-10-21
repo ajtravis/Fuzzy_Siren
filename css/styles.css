@@ -230,3 +230,7 @@ textarea { min-height: 150px; resize: vertical; }
   .hero-logo, .badge .dot { animation: none; }
   html { scroll-behavior: auto; }
 }
+
+/* Contact (no form) */
+.contact-card { display: grid; gap: .75rem; justify-items: start; align-content: start; }
+.contact-email { font-weight: 700; font-size: clamp(1.2rem, 2.6vw, 1.6rem); color: var(--ink); word-break: break-all; }
