@@ -1,7 +1,7 @@
 (function () {
   // Mailing-list endpoint: the Google Apps Script web-app URL from docs/mailing-list-setup.md.
   // Leave empty until the sheet is set up; the form will show a friendly message instead.
-  var SIGNUP_ENDPOINT = '';
+  var SIGNUP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzxZuSpvfHZ6sEoxp8UWnCKb5B-2FPeLQy9mkn1gUBCbfFOhMK0-XU_c0LBttuFPwv7/exec';
   var CONTACT_EMAIL = 'ajt@fuzzysiren.com';
 
   // Mobile nav
